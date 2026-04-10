@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEST — Soumission gratuite — TEST</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================
+       META PIXEL — Remplacer PIXEL_ID_HERE par l'ID du client
+       ============================================================ -->
+  <!--
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID_HERE');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID_HERE&ev=PageView&noscript=1"/></noscript>
+  -->
+  <!-- END META PIXEL -->
+
+  <!-- ============================================================
+       GOOGLE ADS — Remplacer GOOGLE_ADS_ID_HERE par l'ID du client (ex: AW-1234567890)
+       et GOOGLE_ADS_CONV_HERE par le label de conversion (ex: AbCdEfGhIjK)
+       ============================================================ -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GOOGLE_ADS_ID_HERE"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GOOGLE_ADS_ID_HERE');
+  </script>
+  -->
+  <!-- END GOOGLE ADS -->
+
+  <style>
+    /* ── VARIABLES — Modifier par client ───────────────────────── */
+    :root {
+      --accent:   #3A6B48;   /* ex: #8cc63f  #EC3123  #E8660A */
+      --accent2:  #2b5036; /* version foncée du accent */
+      --bg:       #0d0d0d;
+      --bg2:      #161616;
+      --bg3:      #1e1e1e;
+      --white:    #ffffff;
+      --muted:    rgba(255,255,255,0.55);
+      --radius:   10px;
+    }
+
+    /* ── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-left { display: flex; flex-direction: column; }
+    .nav-logo img { height: 38px; width: auto; object-fit: contain; }
+    .nav-rbq { font-size: 0.7rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.03em; }
+    .nav-right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+    .nav-phone {
+      display: flex; align-items: center; gap: 7px;
+      color: var(--white); font-weight: 700; font-size: 1rem;
+    }
+    .nav-phone svg { color: var(--accent); }
+    .nav-tagline { font-size: 0.72rem; color: var(--muted); font-style: italic; }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_1.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Parallax effect */
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero:hover .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.72) 55%,
+        rgba(0,0,0,0.3) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 60px;
+      max-width: 720px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 6px;
+    }
+    .hero h1 strong { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+    .hero-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .hero-bullet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+    .hero-bullet svg { color: var(--accent); flex-shrink: 0; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .btn-primary svg { transition: transform 0.25s; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    /* ── MID CTA BANNER ───────────────────────────────────────── */
+    .mid-cta {
+      background: var(--accent);
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .mid-cta-text {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 800;
+      color: var(--bg);
+      letter-spacing: -0.01em;
+    }
+    .mid-cta-text span { opacity: 0.7; font-weight: 500; font-size: 0.9rem; display: block; margin-top: 4px; }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+      color: var(--white);
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-dark:hover { background: var(--bg2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+    /* ── FAQ ───────────────────────────────────────────────────── */
+    .faq-section {
+      background: var(--bg2);
+      padding: 80px 60px;
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-header { text-align: center; margin-bottom: 48px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.03);
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.06); }
+    .faq-q.open { color: var(--accent); }
+    .faq-chevron {
+      width: 18px; height: 18px; flex-shrink: 0;
+      color: var(--muted);
+      transition: transform 0.25s;
+    }
+    .faq-q.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .faq-a.open { display: block; }
+
+    /* ── FORM STEPS ────────────────────────────────────────────── */
+    .form-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 36px;
+    }
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .progress-circle {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--muted);
+      background: var(--bg2);
+      transition: all 0.3s;
+    }
+    .progress-circle.active { border-color: var(--accent); color: var(--accent); background: rgba(255,255,255,0.05); }
+    .progress-circle.done { border-color: var(--accent); background: var(--accent); color: var(--bg); }
+    .progress-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .progress-label.active { color: var(--accent); }
+    .progress-line {
+      width: 80px; height: 2px;
+      background: rgba(255,255,255,0.1);
+      margin: 0 8px;
+      margin-bottom: 22px;
+      transition: background 0.3s;
+    }
+    .progress-line.done { background: var(--accent); }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .form-nav { display: flex; gap: 12px; margin-top: 8px; }
+    .btn-back {
+      flex: 1;
+      padding: 17px;
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .btn-next {
+      flex: 2;
+      padding: 17px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-next:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .form-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .form-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .form-trust-item svg { color: var(--accent); width: 13px; height: 13px; }
+
+    /* ── TRUST STRIP ───────────────────────────────────────────── */
+    .trust-strip {
+      background: var(--bg2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
+    .trust-item {
+      padding: 32px 20px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      color: var(--accent);
+      margin: 0 auto 12px;
+      width: 40px; height: 40px;
+    }
+    .trust-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.4;
+    }
+
+    /* ── SECTION SHARED ────────────────────────────────────────── */
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .section-title strong {
+      font-style: normal;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 5px;
+    }
+
+    /* ── PAIN SECTION ──────────────────────────────────────────── */
+    .pain {
+      position: relative;
+      padding: 100px 60px;
+      overflow: hidden;
+    }
+    .pain-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_2.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .pain-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.82);
+    }
+    .pain-content { position: relative; z-index: 2; max-width: 760px; }
+    .pain-questions { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+    .pain-q {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      backdrop-filter: blur(4px);
+    }
+    .pain-q-icon {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .pain-q p { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+    .pain-q p strong { color: var(--white); }
+
+    /* ── SOLUTION SECTION ──────────────────────────────────────── */
+    .solution {
+      background: var(--bg2);
+      padding: 100px 60px;
+    }
+    .solution-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .solution-text { }
+    .checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .check-item { display: flex; gap: 14px; align-items: flex-start; }
+    .check-icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      color: var(--accent); margin-top: 2px;
+    }
+    .check-item p { font-size: 0.95rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .check-item p strong { color: var(--white); }
+    .solution-image img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    /* ── GALLERY ───────────────────────────────────────────────── */
+    .gallery {
+      background: var(--bg);
+      padding: 80px 60px;
+    }
+    .gallery-header { text-align: center; margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 4/3;
+      background: var(--bg3);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* ── REVIEWS ───────────────────────────────────────────────── */
+    .reviews {
+      position: relative;
+      padding: 100px 60px;
+      overflow: hidden;
+    }
+    .reviews-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_1.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .reviews-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.84);
+    }
+    .reviews-content { position: relative; z-index: 2; }
+    .reviews-header { text-align: center; margin-bottom: 48px; }
+    .stars-big { color: #f59e0b; font-size: 1.6rem; letter-spacing: 4px; margin-bottom: 16px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.95);
+      color: #1a1a1a;
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .review-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: #fff;
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 700; font-size: 0.9rem; color: #1a1a1a; }
+    .review-meta { font-size: 0.75rem; color: #6b7280; }
+    .review-stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.88rem; color: #374151; line-height: 1.6; }
+
+    /* ── WHY US ────────────────────────────────────────────────── */
+    .whyus {
+      position: relative;
+      padding: 100px 60px;
+      overflow: hidden;
+    }
+    .whyus-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_2.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .whyus-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.80);
+    }
+    .whyus-content {
+      position: relative; z-index: 2;
+      max-width: 680px;
+    }
+    .whyus-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .whyus-item {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 1rem; font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+    .whyus-check {
+      width: 22px; height: 22px; flex-shrink: 0;
+      color: var(--accent);
+    }
+    .whyus-cta { margin-top: 44px; }
+
+    /* ── FORM ──────────────────────────────────────────────────── */
+    .form-section {
+      background: var(--bg2);
+      padding: 100px 60px;
+    }
+    .form-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-header { text-align: center; margin-bottom: 40px; }
+    .form-sub { color: var(--muted); font-size: 0.95rem; margin-top: 10px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 13px 16px;
+      font-size: 0.95rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group select option { background: #1a1a1a; color: #fff; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .btn-submit {
+      width: 100%;
+      padding: 17px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .form-privacy {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+    .form-privacy a { color: var(--accent); text-decoration: underline; }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 56px 24px;
+    }
+    .success-icon { font-size: 3.5rem; margin-bottom: 20px; }
+    .success-msg h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+    .success-msg p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo img { height: 30px; opacity: 0.7; }
+    .footer-links { display: flex; gap: 24px; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .solution-inner { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    }
+    @media (max-width: 600px) {
+      /* ── Layout ── */
+      nav { padding: 12px 20px; }
+      .nav-tagline { display: none; }
+      .nav-phone { font-size: 0.9rem; }
+
+      /* ── Hero: shorter on phones so form is reachable faster ── */
+      .hero { min-height: 65vh; }
+      .hero-content { padding: 48px 20px 40px; }
+      .hero-bullets { gap: 8px; margin-bottom: 28px; }
+
+      /* ── Section padding ── */
+      .pain, .solution, .gallery, .reviews, .whyus, .form-section, .faq-section { padding: 60px 20px; }
+      .mid-cta { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+
+      /* ── Grid collapses ── */
+      .form-row { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .trust-strip { grid-template-columns: 1fr; }
+
+      /* ── iOS zoom prevention: inputs must be ≥ 16px ── */
+      .form-group input,
+      .form-group select,
+      .form-group textarea { font-size: 16px; }
+
+      /* ── Bigger touch targets on mobile ── */
+      .form-group input,
+      .form-group select { padding: 15px 16px; }
+      .btn-submit,
+      .btn-next { padding: 18px; font-size: 0.95rem; }
+      .btn-back { padding: 18px; }
+
+      /* ── Hero CTA full width ── */
+      .btn-primary { width: 100%; justify-content: center; }
+
+      /* ── Mid CTA button full width ── */
+      .btn-dark { width: 100%; justify-content: center; }
+
+      /* ── Form trust wrap nicely ── */
+      .form-trust { gap: 10px; }
+
+      /* ── Progress line shorter ── */
+      .progress-line { width: 40px; }
+
+      /* ── Reviews: single column ── */
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      /* ── Footer ── */
+      footer { flex-direction: column; text-align: center; padding: 24px 20px; }
+      .footer-links { justify-content: center; }
+    }
+    /* ── ANTIGRAVITY BEAUTY FILTER ─────────────────────────────── */
+    .animate-up { 
+      opacity: 0; 
+      transform: translateY(30px); 
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+    }
+    .animate-up.in-view { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.05s; }
+    .delay-2 { transition-delay: 0.15s; }
+    .delay-3 { transition-delay: 0.25s; }
+    .delay-4 { transition-delay: 0.35s; }
+    
+    /* ── HYPER-DYNAMIC AESTHETICS ──────────────────────────────── */
+    @keyframes levitate {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .trust-item { animation: levitate 4s ease-in-out infinite; }
+    .trust-item:nth-child(2) { animation-delay: 0.5s; }
+    .trust-item:nth-child(3) { animation-delay: 1s; }
+    .trust-item:nth-child(4) { animation-delay: 1.5s; }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+      50% { box-shadow: 0 4px 35px var(--accent); }
+    }
+    .btn-primary, .btn-next, .btn-submit { 
+      animation: pulse-glow 3s ease-in-out infinite; 
+    }
+    .btn-primary:hover, .btn-next:hover, .btn-submit:hover {
+      animation: none; /* stop pulse when interacting */
+    }
+    
+    /* Glassmorphism & Hover Elements */
+    nav { 
+      background: rgba(13,13,13,0.65) !important; 
+      backdrop-filter: blur(24px) saturate(180%) !important; 
+      border-bottom: 1px solid rgba(255,255,255,0.08) !important; 
+      box-shadow: 0 4px 40px rgba(0,0,0,0.4); 
+    }
+    .hero-content { position: relative; }
+    .hero-content::after { 
+      content: ''; position: absolute; inset: -40px; 
+      background: radial-gradient(circle, var(--accent) 0%, transparent 60%); 
+      opacity: 0.15; filter: blur(60px); pointer-events: none; z-index: -1; 
+    }
+    .btn-primary, .btn-dark, .btn-next { 
+      position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-radius: 8px !important;
+    }
+    .btn-primary::before, .btn-dark::before, .btn-next::before { 
+      content: ''; position: absolute; inset: 0; 
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); 
+      transform: translateX(-100%); transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1); 
+    }
+    .btn-primary:hover::before, .btn-dark:hover::before, .btn-next:hover::before { 
+      transform: translateX(100%); 
+    }
+    .trust-item { transition: transform 0.3s ease, background 0.3s ease; border-radius: 8px; }
+    .trust-item:hover { transform: translateY(-4px); background: rgba(255,255,255,0.03); }
+    .pain-q, .review-card, .form-group input, .form-group select { 
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .pain-q:hover, .review-card:hover { 
+      transform: translateY(-3px); 
+      border-color: rgba(255,255,255,0.15); 
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <!-- Option A: Logo image -->
+      <img src="{{LOGO_URL}}" alt="TEST" />
+      <!-- Option B: Text logo (si pas de logo image)
+      <span style="font-size:1.4rem;font-weight:900;letter-spacing:-0.5px;">TEST</span>
+      -->
+    </div>
+    <!-- RBQ: Afficher si entrepreneur licencié -->
+  </div>
+  <div class="nav-right">
+    <a href="tel:4189065356" class="nav-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      418 906-5356
+    </a>
+    <span class="nav-tagline">Soumission gratuite · Sans engagement</span>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Entrepreneur certifié</div>
+    <h1>Obtenez votre soumission <em>gratuite</em> dès aujourd'hui</h1>
+    <p class="hero-sub">TEST — service professionnel, résultats garantis.</p>
+    <div class="hero-bullets">
+      <div class="hero-bullet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Soumission 100% gratuite · Sans engagement
+      </div>
+      <div class="hero-bullet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Réponse garantie en moins de 24h
+      </div>
+      <div class="hero-bullet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Équipe certifiée et assurée
+      </div>
+    </div>
+    <a href="#formulaire" class="btn-primary">
+      Obtenir ma soumission gratuite
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ───────────────────────────────────────────────── -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <polyline points="9 12 11 14 15 10"/>
+    </svg>
+    <div class="trust-label">Certifié & assuré</div>
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+    <div class="trust-label">5 étoiles Google</div>
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12 6 12 12 16 14"/>
+    </svg>
+    <div class="trust-label">Réponse en 24h</div>
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    <div class="trust-label">Satisfaction garantie</div>
+  </div>
+</div>
+
+<!-- ── PAIN ──────────────────────────────────────────────────────── -->
+<section class="pain">
+  <div class="pain-bg"></div>
+  <div class="pain-overlay"></div>
+  <div class="pain-content">
+    <div class="section-tag">Vous reconnaissez-vous ?</div>
+    <h2 class="section-title">Vous méritez un entrepreneur <strong>de confiance</strong></h2>
+    <div class="pain-questions">
+      <div class="pain-q">
+        <div class="pain-q-icon">?</div>
+        <p><strong>Difficile de trouver un entrepreneur disponible</strong> qui rappelle et se présente comme prévu ?</p>
+      </div>
+      <div class="pain-q">
+        <div class="pain-q-icon">?</div>
+        <p><strong>Des soumissions qui varient du simple au double</strong> sans savoir laquelle correspond à la réalité ?</p>
+      </div>
+      <div class="pain-q">
+        <div class="pain-q-icon">?</div>
+        <p><strong>Des délais qui s'étirent</strong> et des communications qui disparaissent une fois le contrat signé ?</p>
+      </div>
+      <div class="pain-q">
+        <div class="pain-q-icon">?</div>
+        <p><strong>Des travaux mal exécutés</strong> qui nécessitent des reprises coûteuses quelques mois plus tard ?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MID CTA BANNER ────────────────────────────────────────────── -->
+<div class="mid-cta">
+  <div class="mid-cta-text">
+    Prêt à démarrer votre projet ?
+    <span>Soumission gratuite · Réponse en moins de 24h · Sans engagement</span>
+  </div>
+  <a href="#formulaire" class="btn-dark">
+    Obtenir ma soumission gratuite
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<!-- ── SOLUTION ──────────────────────────────────────────────────── -->
+<section class="solution">
+  <div class="solution-inner">
+    <div class="solution-text">
+      <div class="section-tag">Ce que nous offrons</div>
+      <h2 class="section-title">Un service <em>professionnel</em> de A à Z</h2>
+      <div class="checklist">
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Soumission gratuite et détaillée</strong> — sans frais cachés ni surprises</p>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Équipe certifiée RBQ</strong> — licence en règle, assurances complètes</p>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Respect des délais</strong> — ponctualité et communication à chaque étape</p>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Matériaux de qualité supérieure</strong> — durables et adaptés à votre projet</p>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Travail propre et soigné</strong> — chantier nettoyé à la fin de chaque journée</p>
+        </div>
+        <div class="check-item">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p><strong>Suivi après travaux</strong> — disponible si la moindre question se pose</p>
+        </div>
+      </div>
+    </div>
+    <div class="solution-image">
+      <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_3.png" alt="TEST — réalisation" />
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ───────────────────────────────────────────────────── -->
+<section class="gallery">
+  <div class="gallery-header">
+    <div class="section-tag">Nos réalisations</div>
+    <h2 class="section-title">Des projets dont nous sommes <em>fiers</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_1.png" alt="Réalisation 1" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_2.png" alt="Réalisation 2" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_3.png" alt="Réalisation 3" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_4.png" alt="Réalisation 4" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_5.png" alt="Réalisation 5" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/test/photo_6.png" alt="Réalisation 6" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ───────────────────────────────────────────────────── -->
+<section class="reviews">
+  <div class="reviews-bg"></div>
+  <div class="reviews-overlay"></div>
+  <div class="reviews-content">
+    <div class="reviews-header">
+      <div class="stars-big">★★★★★</div>
+      <h2 class="section-title">Ce que disent nos <em>clients</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <!-- Review 1 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#4f46e5;">M</div>
+          <div>
+            <div class="review-name">Marie-Claude T.</div>
+            <div class="review-meta">Client Google · il y a 2 semaines</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Excellent service de la part de TEST. Travail impeccable, équipe professionnelle et ponctuelle. Je recommande sans hésitation !</p>
+      </div>
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#0891b2;">P</div>
+          <div>
+            <div class="review-name">Patrick L.</div>
+            <div class="review-meta">Client Google · il y a 1 mois</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Très satisfait du résultat final. Soumission claire et honnête, aucune surprise sur la facture. Je referai affaire avec eux.</p>
+      </div>
+      <!-- Review 3 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#059669;">S</div>
+          <div>
+            <div class="review-name">Sophie B.</div>
+            <div class="review-meta">Client Google · il y a 3 semaines</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">J'ai contacté TEST pour un projet important. Réponse rapide, travail de qualité et prix compétitif. Vraiment impressionnée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ─────────────────────────────────────────────────────── -->
+<section class="whyus">
+  <div class="whyus-bg"></div>
+  <div class="whyus-overlay"></div>
+  <div class="whyus-content">
+    <div class="section-tag">Pourquoi nous choisir</div>
+    <h2 class="section-title">Votre projet entre de <strong>bonnes mains</strong></h2>
+    <div class="whyus-list">
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Équipe certifiée et assurée
+      </div>
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Soumission gratuite et sans engagement
+      </div>
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Réponse garantie en moins de 24 heures
+      </div>
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Expérience locale — nous connaissons votre région
+      </div>
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Matériaux de qualité, prix transparents
+      </div>
+      <div class="whyus-item">
+        <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Satisfaction client au cœur de chaque projet
+      </div>
+    </div>
+    <div class="whyus-cta">
+      <a href="#formulaire" class="btn-primary">Obtenir ma soumission gratuite <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORM ──────────────────────────────────────────────────────── -->
+<section class="form-section" id="formulaire">
+  <div class="form-inner">
+    <div class="form-header">
+      <div class="section-tag">Votre soumission</div>
+      <h2 class="section-title">Décrivez votre projet</h2>
+      <p class="form-sub">Remplissez le formulaire en 2 minutes. Nous vous recontactons rapidement.</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="form-progress">
+      <div class="progress-step">
+        <div class="progress-circle active" id="circle1">1</div>
+        <div class="progress-label active" id="label1">Votre projet</div>
+      </div>
+      <div class="progress-line" id="line1"></div>
+      <div class="progress-step">
+        <div class="progress-circle" id="circle2">2</div>
+        <div class="progress-label" id="label2">Vos coordonnées</div>
+      </div>
+    </div>
+
+    <form id="leadForm">
+      <!-- ── STEP 1 ── -->
+      <div class="form-step active" id="step1">
+        <div class="form-group">
+          <label for="budget">Budget approximatif</label>
+          <select id="budget" name="budget" required>
+            <option value="" disabled selected>Sélectionnez une fourchette</option>
+                      <option value="Moins de 5 000$">Moins de 5 000$</option>
+          <option value="5 000$ – 15 000$">5 000$ – 15 000$</option>
+          <option value="15 000$ – 30 000$">15 000$ – 30 000$</option>
+          <option value="30 000$ – 75 000$">30 000$ – 75 000$</option>
+          <option value="75 000$ et plus">75 000$ et plus</option>
+          <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="address">Adresse du projet</label>
+          <input type="text" id="address" name="address" placeholder="123 rue Principale, Québec, QC" required />
+        </div>
+        <button type="button" class="btn-next" id="btnNext">Continuer →</button>
+      </div>
+
+      <!-- ── STEP 2 ── -->
+      <div class="form-step" id="step2">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">Prénom</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Jean" required />
+          </div>
+          <div class="form-group">
+            <label for="last_name">Nom</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Tremblay" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone" placeholder="418 555-1234" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Courriel</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required />
+          </div>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back" id="btnBack">← Retour</button>
+          <button type="submit" class="btn-submit btn-next" id="submitBtn">Obtenir ma soumission gratuite →</button>
+        </div>
+        <div class="form-trust">
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Réponse immédiate
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Données sécurisées
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Loi 25 conforme
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Sans engagement
+          </div>
+        </div>
+        <p class="form-privacy">
+          En soumettant ce formulaire, vous acceptez notre
+          <a href="politique-de-confidentialite.html" target="_blank">politique de confidentialité</a>.
+        </p>
+      </div>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✅</div>
+      <h3>Demande reçue !</h3>
+      <p>Merci ! L'équipe de TEST vous contactera dans les prochaines heures.
+Vérifiez vos SMS et courriels.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="section-tag">Questions fréquentes</div>
+      <h2 class="section-title">Tout ce que vous devez savoir</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          Est-ce que la soumission est vraiment gratuite ?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">Oui, absolument. TEST offre une soumission détaillée et personnalisée sans aucuns frais ni engagement de votre part.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Dans quel délai serai-je contacté ?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">Notre équipe vous répond généralement dans les 24 heures suivant votre demande, souvent le jour même.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Avez-vous les assurances requises ?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">TEST détient toutes les assurances requises pour la réalisation de travaux au Québec.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Quelle zone géographique desservez-vous ?
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">Contactez-nous pour vérifier si votre projet est dans notre zone de service. Nous desservons plusieurs régions du Québec.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">
+    <img src="{{LOGO_URL}}" alt="TEST" />
+  </div>
+  <div class="footer-links">
+    <span>418 906-5356</span>
+    <span>·</span>
+    <span></span>
+    <span>·</span>
+    <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+  </div>
+  <div style="font-size:0.68rem;color:rgba(255,255,255,0.2);white-space:nowrap;">
+    Propulsé par <a href="https://agencegosell.ca" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Agence GoSell</a>
+  </div>
+</footer>
+
+<script>
+  const WEBHOOK_URL = 'https://agosell.app.n8n.cloud/webhook/fc4a8837-b12d-45fa-8f2e-ad60cee0f848';
+
+  // ── Multi-step form logic ──────────────────────────────────────
+  document.getElementById('btnNext').addEventListener('click', function() {
+    const step1 = document.getElementById('step1');
+    // Validate step 1 fields
+    const selects = step1.querySelectorAll('select[required], input[required]');
+    let valid = true;
+    selects.forEach(el => { if (!el.value) { el.focus(); valid = false; } });
+    if (!valid) return;
+
+    // Transition to step 2
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+    document.getElementById('circle1').classList.remove('active');
+    document.getElementById('circle1').classList.add('done');
+    document.getElementById('circle1').innerHTML = '✓';
+    document.getElementById('label1').classList.remove('active');
+    document.getElementById('line1').classList.add('done');
+    document.getElementById('circle2').classList.add('active');
+    document.getElementById('label2').classList.add('active');
+    window.scrollTo({ top: document.getElementById('formulaire').offsetTop - 80, behavior: 'smooth' });
+  });
+
+  document.getElementById('btnBack').addEventListener('click', function() {
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('circle1').classList.add('active');
+    document.getElementById('circle1').classList.remove('done');
+    document.getElementById('circle1').innerHTML = '1';
+    document.getElementById('label1').classList.add('active');
+    document.getElementById('line1').classList.remove('done');
+    document.getElementById('circle2').classList.remove('active');
+    document.getElementById('label2').classList.remove('active');
+  });
+
+  // ── Form submit ────────────────────────────────────────────────
+  document.getElementById('leadForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
+    // ── Source detection (URL params) ──────────────────────────
+    const _params = new URLSearchParams(window.location.search);
+    const _gclid  = _params.get('gclid')  || '';
+    const _fbclid = _params.get('fbclid') || '';
+    const _source = _gclid ? 'google' : _fbclid ? 'facebook' : 'direct';
+
+    const data = {
+      first_name: this.first_name.value,
+      last_name:  this.last_name.value,
+      phone:      this.phone.value,
+      email:      this.email.value,
+      address:    this.address.value,
+      budget:     this.budget.value,
+      source:     _source,
+      gclid:      _gclid,
+    };
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      document.getElementById('leadForm').style.display = 'none';
+      document.querySelector('.form-progress').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      // Meta Pixel — Lead event (uncomment when pixel is active)
+      // if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+      // Google Ads — Conversion (uncomment when Google Ads is active)
+      // if (typeof gtag !== 'undefined') gtag('event', 'conversion', { send_to: 'GOOGLE_ADS_ID_HERE/GOOGLE_ADS_CONV_HERE' });
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Obtenir ma soumission gratuite →';
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  });
+
+  // ── FAQ accordion ──────────────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        answer.classList.add('open');
+        this.classList.add('open');
+      }
+    });
+  });
+  // ── Auto-injection Antigravity Animations ────────────────────
+  const animatedSelectors = [
+    '.section-title', '.section-tag', '.trust-item', 
+    '.pain-q', '.check-item', '.gallery-item', 
+    '.review-card', '.whyus-item', '.form-group', '.success-msg'
+  ];
+  
+  animatedSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      el.classList.add('animate-up');
+      const delay = (index % 4) + 1;
+      el.classList.add(`delay-${delay}`);
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -40px 0px" });
+
+  document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
