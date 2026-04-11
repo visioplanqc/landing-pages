@@ -950,6 +950,109 @@
   </div>
 </div>
 
+<!-- ── FORM ──────────────────────────────────────────────────────── -->
+<section class="form-section" id="formulaire">
+  <div class="form-inner">
+    <div class="form-header">
+      <div class="section-tag">Analyse Gratuite</div>
+      <h2 class="section-title">Demandez votre analyse</h2>
+      <p class="form-sub">Réservez votre test de qualité d'air gratuit en moins de 60 secondes.</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="form-progress">
+      <div class="progress-step">
+        <div class="progress-circle active" id="circle1">1</div>
+        <div class="progress-label active" id="label1">Votre air</div>
+      </div>
+      <div class="progress-line" id="line1"></div>
+      <div class="progress-step">
+        <div class="progress-circle" id="circle2">2</div>
+        <div class="progress-label" id="label2">Vos coordonnées</div>
+      </div>
+    </div>
+
+    <form id="leadForm">
+      <!-- ── STEP 1 ── -->
+      <div class="form-step active" id="step1">
+        <div class="form-group">
+          <label for="budget">Symptômes ou besoin</label>
+          <select id="budget" name="budget" required>
+            <option value="" disabled selected>Sélectionnez votre situation</option>
+            <option value="Allergies & Asthme">Allergies & Asthme</option>
+            <option value="Poussière excessive">Poussière excessive</option>
+            <option value="Difficultés respiratoires">Difficultés respiratoires</option>
+            <option value="Odeurs & Humidité">Odeurs & Humidité</option>
+            <option value="Autre / Information">Autre / Information</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="address">Adresse de résidence</label>
+          <input type="text" id="address" name="address" placeholder="Ex: 789 rue de l'Air, Québec, QC" required />
+        </div>
+        <button type="button" class="btn-next" id="btnNext">Continuer →</button>
+      </div>
+
+      <!-- ── STEP 2 ── -->
+      <div class="form-step" id="step2">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">Prénom</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Jean" required />
+          </div>
+          <div class="form-group">
+            <label for="last_name">Nom</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Tremblay" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input type="tel" id="phone" name="phone" placeholder="418 555-1234" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Courriel</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required />
+          </div>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back" id="btnBack">← Retour</button>
+          <button type="submit" class="btn-submit btn-next" id="submitBtn">Réserver mon test gratuit →</button>
+        </div>
+        <div class="form-trust">
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Réponse immédiate
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Données sécurisées
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Loi 25 conforme
+          </div>
+          <div class="form-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Sans engagement
+          </div>
+        </div>
+        <p class="form-privacy">
+          En soumettant ce formulaire, vous acceptez notre
+          <a href="politique-de-confidentialite.html" target="_blank">politique de confidentialité</a>.
+        </p>
+      </div>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✅</div>
+      <h3>Demande reçue !</h3>
+      <p>Merci ! Un expert de ClimaPure vous contactera sous peu pour confirmer votre rendez-vous. 
+Vérifiez votre boîte de réception.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── PAIN ──────────────────────────────────────────────────────── -->
 <section class="pain">
   <div class="pain-bg"></div>
@@ -1123,108 +1226,7 @@
   </div>
 </section>
 
-<!-- ── FORM ──────────────────────────────────────────────────────── -->
-<section class="form-section" id="formulaire">
-  <div class="form-inner">
-    <div class="form-header">
-      <div class="section-tag">Analyse Gratuite</div>
-      <h2 class="section-title">Demandez votre analyse</h2>
-      <p class="form-sub">Réservez votre test de qualité d'air gratuit en moins de 60 secondes.</p>
-    </div>
 
-    <!-- Progress bar -->
-    <div class="form-progress">
-      <div class="progress-step">
-        <div class="progress-circle active" id="circle1">1</div>
-        <div class="progress-label active" id="label1">Votre air</div>
-      </div>
-      <div class="progress-line" id="line1"></div>
-      <div class="progress-step">
-        <div class="progress-circle" id="circle2">2</div>
-        <div class="progress-label" id="label2">Vos coordonnées</div>
-      </div>
-    </div>
-
-    <form id="leadForm">
-      <!-- ── STEP 1 ── -->
-      <div class="form-step active" id="step1">
-        <div class="form-group">
-          <label for="budget">Symptômes ou besoin</label>
-          <select id="budget" name="budget" required>
-            <option value="" disabled selected>Sélectionnez votre situation</option>
-            <option value="Allergies & Asthme">Allergies & Asthme</option>
-            <option value="Poussière excessive">Poussière excessive</option>
-            <option value="Difficultés respiratoires">Difficultés respiratoires</option>
-            <option value="Odeurs & Humidité">Odeurs & Humidité</option>
-            <option value="Autre / Information">Autre / Information</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="address">Adresse de résidence</label>
-          <input type="text" id="address" name="address" placeholder="Ex: 789 rue de l'Air, Québec, QC" required />
-        </div>
-        <button type="button" class="btn-next" id="btnNext">Continuer →</button>
-      </div>
-
-      <!-- ── STEP 2 ── -->
-      <div class="form-step" id="step2">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="first_name">Prénom</label>
-            <input type="text" id="first_name" name="first_name" placeholder="Jean" required />
-          </div>
-          <div class="form-group">
-            <label for="last_name">Nom</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Tremblay" required />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phone">Téléphone</label>
-            <input type="tel" id="phone" name="phone" placeholder="418 555-1234" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Courriel</label>
-            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required />
-          </div>
-        </div>
-        <div class="form-nav">
-          <button type="button" class="btn-back" id="btnBack">← Retour</button>
-          <button type="submit" class="btn-submit btn-next" id="submitBtn">Réserver mon test gratuit →</button>
-        </div>
-        <div class="form-trust">
-          <div class="form-trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Réponse immédiate
-          </div>
-          <div class="form-trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            Données sécurisées
-          </div>
-          <div class="form-trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Loi 25 conforme
-          </div>
-          <div class="form-trust-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Sans engagement
-          </div>
-        </div>
-        <p class="form-privacy">
-          En soumettant ce formulaire, vous acceptez notre
-          <a href="politique-de-confidentialite.html" target="_blank">politique de confidentialité</a>.
-        </p>
-      </div>
-    </form>
-
-    <div class="success-msg" id="successMsg">
-      <div class="success-icon">✅</div>
-      <h3>Demande reçue !</h3>
-      <p>Merci ! Un expert de ClimaPure vous contactera sous peu pour confirmer votre rendez-vous. 
-Vérifiez votre boîte de réception.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ── FAQ ───────────────────────────────────────────────────────── -->
 <section class="faq-section">
