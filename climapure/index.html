@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClimaPure — Soumission gratuite — ClimaPure</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800;900&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- ============================================================
        META PIXEL — Remplacer PIXEL_ID_HERE par l'ID du client
@@ -42,25 +42,27 @@
   <style>
     /* ── VARIABLES — Modifier par client ───────────────────────── */
     :root {
-      --accent:   #005C97;   /* ex: #8cc63f  #EC3123  #E8660A */
-      --accent2:  #004571; /* version foncée du accent */
-      --bg:       #0d0d0d;
-      --bg2:      #161616;
-      --bg3:      #1e1e1e;
-      --white:    #ffffff;
-      --muted:    rgba(255,255,255,0.55);
-      --radius:   10px;
+      --accent:       #005999;   /* Brand Blue */
+      --accent-green: #74B43B;   /* Brand Green */
+      --gradient:     linear-gradient(135deg, #005999 0%, #74B43B 100%);
+      --bg:           #0B0D11;
+      --bg2:          #14171D;
+      --bg3:          #1C2028;
+      --white:        #ffffff;
+      --muted:        rgba(255,255,255,0.6);
+      --radius:       12px;
     }
 
     /* ── RESET ─────────────────────────────────────────────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Outfit', system-ui, sans-serif;
       background: var(--bg);
       color: var(--white);
       line-height: 1.6;
     }
+    h1, h2, h3, .section-title { font-family: 'Epilogue', sans-serif; }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
@@ -116,38 +118,49 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 80px 60px;
-      max-width: 720px;
+      padding: 120px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(116, 180, 59, 0.1);
+      border: 1px solid rgba(116, 180, 59, 0.2);
       padding: 6px 16px;
       border-radius: 100px;
       font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
+      color: var(--accent-green);
+      margin-bottom: 32px;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 22px;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.4rem, 8vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
     }
     .hero h1 em {
       font-style: normal;
+      color: var(--white);
       text-decoration: underline;
-      text-decoration-color: var(--accent);
-      text-underline-offset: 6px;
+      text-decoration-color: var(--accent-green);
+      text-underline-offset: 8px;
     }
-    .hero h1 strong { color: var(--accent); font-style: normal; }
+    .hero h1 strong { 
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: normal; 
+    }
     .hero-sub {
       font-size: 1.1rem;
       color: rgba(255,255,255,0.75);
@@ -157,77 +170,88 @@
     }
     .hero-bullets {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 36px;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 40px;
     }
     .hero-bullet {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
+      color: var(--white);
       font-weight: 500;
+      background: rgba(255,255,255,0.05);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .hero-bullet svg { color: var(--accent); flex-shrink: 0; }
+    .hero-bullet svg { color: var(--accent-green); flex-shrink: 0; }
     .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-      padding: 16px 32px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      gap: 12px;
+      background: var(--gradient);
+      color: var(--white);
+      padding: 20px 48px;
+      border-radius: 50px !important;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 10px 30px -10px var(--accent);
+      border: none;
     }
     .btn-primary:hover {
-      background: var(--accent);
-      color: var(--bg);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 20px 50px -15px var(--accent);
     }
-    .btn-primary svg { transition: transform 0.25s; }
-    .btn-primary:hover svg { transform: translateX(4px); }
+    .btn-primary svg { transition: transform 0.3s; }
+    .btn-primary:hover svg { transform: translateX(6px); }
 
     /* ── MID CTA BANNER ───────────────────────────────────────── */
     .mid-cta {
-      background: var(--accent);
-      padding: 36px 60px;
+      background: var(--gradient);
+      padding: 60px 40px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 32px;
     }
     .mid-cta-text {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
       font-weight: 800;
-      color: var(--bg);
-      letter-spacing: -0.01em;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      max-width: 800px;
     }
-    .mid-cta-text span { opacity: 0.7; font-weight: 500; font-size: 0.9rem; display: block; margin-top: 4px; }
+    .mid-cta-text span { opacity: 0.9; font-weight: 400; font-size: 1rem; display: block; margin-top: 12px; }
     .btn-dark {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: var(--bg);
-      color: var(--white);
-      padding: 15px 30px;
-      border-radius: 6px;
-      font-size: 0.88rem;
+      gap: 12px;
+      background: var(--white);
+      color: var(--accent);
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 0.95rem;
       font-weight: 800;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-transform: none;
       white-space: nowrap;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .btn-dark:hover { background: var(--bg2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .btn-dark:hover { 
+      background: var(--white); 
+      transform: translateY(-4px) scale(1.02); 
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2); 
+    }
 
     /* ── FAQ ───────────────────────────────────────────────────── */
     .faq-section {
@@ -239,7 +263,7 @@
       margin: 0 auto;
     }
     .faq-header { text-align: center; margin-bottom: 48px; }
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-list { display: flex; flex-direction: column; gap: 18px; }
     .faq-item {
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
@@ -250,7 +274,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 20px 24px;
+      padding: 24px 28px;
       cursor: pointer;
       font-weight: 600;
       font-size: 0.95rem;
@@ -269,12 +293,52 @@
     .faq-q.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
     .faq-a {
       display: none;
-      padding: 0 24px 20px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
+      padding: 24px 32px 32px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
     .faq-a.open { display: block; }
+
+
+
+    /* ── STICKY CTA (Mobile Only) ────────────────────────────── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      left: 20px;
+      right: 20px;
+      background: rgba(11, 13, 17, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 20px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 1000;
+      transform: translateY(150%);
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .sticky-cta.show { transform: translateY(0); }
+    .sticky-cta-text { font-size: 0.85rem; font-weight: 700; color: var(--white); }
+    .sticky-cta .btn-mini {
+      background: var(--gradient);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 601px) {
+      .sticky-cta { display: none; }
+    }
 
     /* ── FORM STEPS ────────────────────────────────────────────── */
     .form-progress {
@@ -690,13 +754,15 @@
       .nav-phone { font-size: 0.9rem; }
 
       /* ── Hero: shorter on phones so form is reachable faster ── */
-      .hero { min-height: 65vh; }
-      .hero-content { padding: 48px 20px 40px; }
-      .hero-bullets { gap: 8px; margin-bottom: 28px; }
+      .hero { min-height: 80vh; }
+      .hero-content { padding: 60px 20px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-bullets { flex-direction: column; gap: 12px; align-items: center; }
+      .hero-bullet { width: 100%; justify-content: center; }
 
       /* ── Section padding ── */
-      .pain, .solution, .gallery, .reviews, .whyus, .form-section, .faq-section { padding: 60px 20px; }
-      .mid-cta { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+      .pain, .solution, .gallery, .reviews, .whyus, .form-section, .faq-section { padding: 80px 20px; }
+      .mid-cta { padding: 60px 20px; }
 
       /* ── Grid collapses ── */
       .form-row { grid-template-columns: 1fr; }
@@ -715,11 +781,11 @@
       .btn-next { padding: 18px; font-size: 0.95rem; }
       .btn-back { padding: 18px; }
 
-      /* ── Hero CTA full width ── */
-      .btn-primary { width: 100%; justify-content: center; }
-
-      /* ── Mid CTA button full width ── */
-      .btn-dark { width: 100%; justify-content: center; }
+      /* ── Global Full Width Buttons for Mobile ── */
+      .btn-primary, .btn-dark, .btn-submit, .btn-next { 
+        width: 100%; 
+        justify-content: center; 
+      }
 
       /* ── Form trust wrap nicely ── */
       .form-trust { gap: 10px; }
@@ -812,14 +878,14 @@
       <!-- Option A: Logo image -->
       <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/logo.png" alt="ClimaPure" />
     </div>
-    <!-- RBQ: Afficher si entrepreneur licencié -->
+    <!-- Spécialiste de la qualité de l'air -->
   </div>
   <div class="nav-right">
     <a href="tel:5819989732" class="nav-phone">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       581 998-9732
     </a>
-    <span class="nav-tagline">Soumission gratuite · Sans engagement</span>
+    <span class="nav-tagline">Test de qualité d'air gratuit · Sans engagement</span>
   </div>
 </nav>
 
@@ -828,32 +894,31 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Obtenez votre soumission <em>gratuite</em> dès aujourd'hui</h1>
-    <p class="hero-sub">Parce que la santé de vos proches commence par l’air qu’ils respirent.
-
-Un air plus sain pour un sommeil plus profond et des journées plus productives.
-
-Éliminez 99,9% des polluants et reprenez le contrôle de votre environnement.</p>
+    <div class="hero-badge">Technologies de Purification d'Air</div>
+    <h1>Respirez un air <strong>purifié</strong> & <em>sain</em> dès aujourd'hui</h1>
+    <p class="hero-sub">L'air que vous respirez influence directement votre bien-être, votre énergie et votre santé. Nos systèmes de filtration avancés neutralisent 99,9% des polluants pour protéger votre foyer.</p>
     <div class="hero-bullets">
       <div class="hero-bullet">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Soumission 100% gratuite · Sans engagement
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Analyse d'air 100% gratuite
       </div>
       <div class="hero-bullet">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Réponse garantie en moins de 24h
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Filtration HEPA Certifiée
       </div>
       <div class="hero-bullet">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Équipe certifiée et assurée
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Installation rapide & soignée
       </div>
     </div>
     <a href="#formulaire" class="btn-primary">
-      Obtenir ma soumission gratuite
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Demander mon test d'air gratuit
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </section>
+
+
 
 <!-- ── TRUST STRIP ───────────────────────────────────────────────── -->
 <div class="trust-strip">
@@ -862,26 +927,26 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       <polyline points="9 12 11 14 15 10"/>
     </svg>
-    <div class="trust-label">Certifié & assuré</div>
+    <div class="trust-label">Filtration HEPA Certifiée</div>
   </div>
   <div class="trust-item">
     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
     </svg>
-    <div class="trust-label">5 étoiles Google</div>
+    <div class="trust-label">Élimination des Allergènes</div>
   </div>
   <div class="trust-item">
     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <circle cx="12" cy="12" r="10"/>
       <polyline points="12 6 12 12 16 14"/>
     </svg>
-    <div class="trust-label">Réponse en 24h</div>
+    <div class="trust-label">Analyse d'Air Gratuite</div>
   </div>
   <div class="trust-item">
     <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <polyline points="20 6 9 17 4 12"/>
     </svg>
-    <div class="trust-label">Satisfaction garantie</div>
+    <div class="trust-label">Sommeil & Santé Améliorés</div>
   </div>
 </div>
 
@@ -890,71 +955,75 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
   <div class="pain-bg"></div>
   <div class="pain-overlay"></div>
   <div class="pain-content">
-    <div class="section-tag">Vous reconnaissez-vous ?</div>
-    <h2 class="section-title">Vous méritez un entrepreneur <strong>de confiance</strong></h2>
+    <div class="section-tag">Qualité de l'air</div>
+    <h2 class="section-title">Les dangers d'un air <strong>non purifié</strong></h2>
     <div class="pain-questions">
       <div class="pain-q">
         <div class="pain-q-icon">?</div>
-        <p><strong>Difficile de trouver un entrepreneur disponible</strong> qui rappelle et se présente comme prévu ?</p>
+        <p><strong>Problèmes respiratoires</strong> : L'asthme et les allergies sont souvent aggravés par les particules fines en suspension.</p>
       </div>
       <div class="pain-q">
         <div class="pain-q-icon">?</div>
-        <p><strong>Des soumissions qui varient du simple au double</strong> sans savoir laquelle correspond à la réalité ?</p>
+        <p><strong>Moisissures et humidité</strong> : Un air trop humide favorise la prolifération de micro-organismes nocifs pour la santé.</p>
       </div>
       <div class="pain-q">
         <div class="pain-q-icon">?</div>
-        <p><strong>Des délais qui s'étirent</strong> et des communications qui disparaissent une fois le contrat signé ?</p>
+        <p><strong>Propagation des virus</strong> : Dans les espaces mal ventilés, les bactéries et virus se concentrent et augmentent les risques.</p>
       </div>
       <div class="pain-q">
         <div class="pain-q-icon">?</div>
-        <p><strong>Des travaux mal exécutés</strong> qui nécessitent des reprises coûteuses quelques mois plus tard ?</p>
+        <p><strong>Fatigue inexpliquée</strong> : Une mauvaise qualité d'air affecte votre sommeil et votre niveau d'énergie quotidien.</p>
       </div>
     </div>
   </div>
 </section>
 
+
+
 <!-- ── MID CTA BANNER ────────────────────────────────────────────── -->
 <div class="mid-cta">
   <div class="mid-cta-text">
-    Prêt à démarrer votre projet ?
-    <span>Soumission gratuite · Réponse en moins de 24h · Sans engagement</span>
+    Êtes-vous certain de la qualité de votre air ?
+    <span>Test d'air gratuit · Analyse experte · Sans engagement</span>
   </div>
   <a href="#formulaire" class="btn-dark">
-    Obtenir ma soumission gratuite
+    Demander mon test d'air gratuit
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
 </div>
+
+
 
 <!-- ── SOLUTION ──────────────────────────────────────────────────── -->
 <section class="solution">
   <div class="solution-inner">
     <div class="solution-text">
       <div class="section-tag">Ce que nous offrons</div>
-      <h2 class="section-title">Un service <em>professionnel</em> de A à Z</h2>
+      <h2 class="section-title">Des solutions <em>sur mesure</em> pour votre maison</h2>
       <div class="checklist">
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Soumission gratuite et détaillée</strong> — sans frais cachés ni surprises</p>
+          <p><strong>Analyse d'air approfondie</strong> — Détection des polluants et allergènes invisibles</p>
         </div>
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Équipe certifiée RBQ</strong> — licence en règle, assurances complètes</p>
+          <p><strong>Purificateurs Haute Performance</strong> — Équipés de filtres HEPA H13 certifiés</p>
         </div>
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Respect des délais</strong> — ponctualité et communication à chaque étape</p>
+          <p><strong>Élimination des odeurs & COV</strong> — Neutralisation des polluants chimiques intérieurs</p>
         </div>
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Matériaux de qualité supérieure</strong> — durables et adaptés à votre projet</p>
+          <p><strong>Technologies Silencieuses</strong> — Un air purifié sans nuisance sonore pour vos nuits</p>
         </div>
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Travail propre et soigné</strong> — chantier nettoyé à la fin de chaque journée</p>
+          <p><strong>Installation Professionnelle</strong> — Mise en place rapide et formation à l'utilisation</p>
         </div>
         <div class="check-item">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <p><strong>Suivi après travaux</strong> — disponible si la moindre question se pose</p>
+          <p><strong>Maintenance & Support</strong> — Une équipe toujours disponible pour vos questions</p>
         </div>
       </div>
     </div>
@@ -985,7 +1054,7 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
           </div>
         </div>
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Excellent service de la part de ClimaPure. Travail impeccable, équipe professionnelle et ponctuelle. Je recommande sans hésitation !</p>
+        <p class="review-text">Depuis l'installation de notre purificateur, l'air de la maison est nettement plus frais. Mes allergies ont presque disparu, c'est incroyable !</p>
       </div>
       <!-- Review 2 -->
       <div class="review-card">
@@ -997,7 +1066,7 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
           </div>
         </div>
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Très satisfait du résultat final. Soumission claire et honnête, aucune surprise sur la facture. Je referai affaire avec eux.</p>
+        <p class="review-text">Équipe très professionnelle. Ils ont analysé notre air et nous ont conseillé le système parfait pour notre salon. Très silencieux et efficace.</p>
       </div>
       <!-- Review 3 -->
       <div class="review-card">
@@ -1009,7 +1078,7 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
           </div>
         </div>
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">J'ai contacté ClimaPure pour un projet important. Réponse rapide, travail de qualité et prix compétitif. Vraiment impressionnée.</p>
+        <p class="review-text">Enfin un air pur ! On sent vraiment la différence en rentrant à la maison. Plus d'odeurs persistantes et on dort beaucoup mieux.</p>
       </div>
     </div>
   </div>
@@ -1021,35 +1090,35 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
   <div class="whyus-overlay"></div>
   <div class="whyus-content">
     <div class="section-tag">Pourquoi nous choisir</div>
-    <h2 class="section-title">Votre projet entre de <strong>bonnes mains</strong></h2>
+    <h2 class="section-title">Votre air entre de <strong>bonnes mains</strong></h2>
     <div class="whyus-list">
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Équipe certifiée et assurée
+        Technologie HEPA de grade médical
       </div>
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Soumission gratuite et sans engagement
+        Test d'air complet et gratuit
       </div>
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Réponse garantie en moins de 24 heures
+        Élimination de 99,99% des virus et bactéries
       </div>
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Expérience locale — nous connaissons votre région
+        Expertise reconnue en qualité de l'air
       </div>
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Matériaux de qualité, prix transparents
+        Systèmes durables et économes en énergie
       </div>
       <div class="whyus-item">
         <svg class="whyus-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Satisfaction client au cœur de chaque projet
+        Sommeil & Respiration Améliorés
       </div>
     </div>
     <div class="whyus-cta">
-      <a href="#formulaire" class="btn-primary">Obtenir ma soumission gratuite <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#formulaire" class="btn-primary">Demander mon test d'air gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
@@ -1058,16 +1127,16 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
 <section class="form-section" id="formulaire">
   <div class="form-inner">
     <div class="form-header">
-      <div class="section-tag">Votre soumission</div>
-      <h2 class="section-title">Décrivez votre projet</h2>
-      <p class="form-sub">Remplissez le formulaire en 2 minutes. Nous vous recontactons rapidement.</p>
+      <div class="section-tag">Analyse Gratuite</div>
+      <h2 class="section-title">Demandez votre analyse</h2>
+      <p class="form-sub">Réservez votre test de qualité d'air gratuit en moins de 60 secondes.</p>
     </div>
 
     <!-- Progress bar -->
     <div class="form-progress">
       <div class="progress-step">
         <div class="progress-circle active" id="circle1">1</div>
-        <div class="progress-label active" id="label1">Votre projet</div>
+        <div class="progress-label active" id="label1">Votre air</div>
       </div>
       <div class="progress-line" id="line1"></div>
       <div class="progress-step">
@@ -1080,18 +1149,19 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
       <!-- ── STEP 1 ── -->
       <div class="form-step active" id="step1">
         <div class="form-group">
-          <label for="budget">Type de demande</label>
+          <label for="budget">Symptômes ou besoin</label>
           <select id="budget" name="budget" required>
-            <option value="" disabled selected>Sélectionnez une option</option>
-            <option value="Achat immédiat">Achat immédiat</option>
-            <option value="Demande d'information">Demande d'information</option>
-            <option value="Demande de rappel">Demande de rappel</option>
-            <option value="Autre">Autre</option>
+            <option value="" disabled selected>Sélectionnez votre situation</option>
+            <option value="Allergies & Asthme">Allergies & Asthme</option>
+            <option value="Poussière excessive">Poussière excessive</option>
+            <option value="Difficultés respiratoires">Difficultés respiratoires</option>
+            <option value="Odeurs & Humidité">Odeurs & Humidité</option>
+            <option value="Autre / Information">Autre / Information</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="address">Adresse du projet</label>
-          <input type="text" id="address" name="address" placeholder="123 rue Principale, Québec, QC" required />
+          <label for="address">Adresse de résidence</label>
+          <input type="text" id="address" name="address" placeholder="Ex: 789 rue de l'Air, Québec, QC" required />
         </div>
         <button type="button" class="btn-next" id="btnNext">Continuer →</button>
       </div>
@@ -1120,7 +1190,7 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
         </div>
         <div class="form-nav">
           <button type="button" class="btn-back" id="btnBack">← Retour</button>
-          <button type="submit" class="btn-submit btn-next" id="submitBtn">Obtenir ma soumission gratuite →</button>
+          <button type="submit" class="btn-submit btn-next" id="submitBtn">Réserver mon test gratuit →</button>
         </div>
         <div class="form-trust">
           <div class="form-trust-item">
@@ -1150,8 +1220,8 @@ Un air plus sain pour un sommeil plus profond et des journées plus productives.
     <div class="success-msg" id="successMsg">
       <div class="success-icon">✅</div>
       <h3>Demande reçue !</h3>
-      <p>Merci ! L'équipe de ClimaPure vous contactera dans les prochaines heures.
-Vérifiez vos SMS et courriels.</p>
+      <p>Merci ! Un expert de ClimaPure vous contactera sous peu pour confirmer votre rendez-vous. 
+Vérifiez votre boîte de réception.</p>
     </div>
   </div>
 </section>
@@ -1166,52 +1236,63 @@ Vérifiez vos SMS et courriels.</p>
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">
-          Est-ce que la soumission est vraiment gratuite ?
+          Comment fonctionne votre test de qualité d'air ?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <div class="faq-a">Oui, absolument. ClimaPure offre une soumission détaillée et personnalisée sans aucuns frais ni engagement de votre part.</div>
+        <div class="faq-a">Un expert se déplace chez vous, analyse les particules fines et polluants en temps réel avec des outils de précision, et vous remet un rapport complet sans frais.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">
-          Dans quel délai serai-je contacté ?
+          Quels types de polluants détectez-vous ?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <div class="faq-a">Notre équipe vous répond généralement dans les 24 heures suivant votre demande, souvent le jour même.</div>
+        <div class="faq-a">Nous détectons les allergènes (poils, pollen), les composés organiques volatils (COV), ainsi que les particules fines (PM2.5) souvent invisibles mais dangereuses.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">
-          Avez-vous les assurances requises ?
+          Quelle différence vais-je ressentir après le traitement ?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <div class="faq-a">ClimaPure détient toutes les assurances requises pour la réalisation de travaux au Québec.</div>
+        <div class="faq-a">Une réduction immédiate des symptômes allergiques, une meilleure qualité de sommeil et un air visiblement plus pur, léger et sans odeurs.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">
-          Quelle zone géographique desservez-vous ?
+          Pourquoi investir dans un purificateur maintenant ?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <div class="faq-a">Contactez-nous pour vérifier si votre projet est dans notre zone de service. Nous desservons plusieurs régions du Québec.</div>
+        <div class="faq-a">Pour protéger votre santé sur le long terme en éliminant les menaces invisibles et les moisissures que les systèmes de ventilation standards ne captent pas.</div>
       </div>
     </div>
   </div>
 </section>
 
+
+
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-logo">
-    <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/logo.png" alt="ClimaPure" />
-  </div>
-  <div class="footer-links">
-    <span>581 998-9732</span>
-    <span>·</span>
-    <span></span>
-    <span>·</span>
-    <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
-  </div>
-  <div style="font-size:0.68rem;color:rgba(255,255,255,0.2);white-space:nowrap;">
-    Propulsé par <a href="https://agencegosell.ca" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Agence GoSell</a>
+<footer style="padding: 40px 20px; text-align: center; background: var(--bg);">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/logo.png" alt="ClimaPure" style="height: 300px; margin: 0 auto 16px;" />
+    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.6;">
+      Expertise spécialisée en purification d'air à travers le Québec. <br/>
+      Améliorer votre santé commence par l'air que vous respirez.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.85rem; color: var(--muted); margin-bottom: 24px;">
+      <a href="#">Conditions</a>
+      <a href="#">Confidentialité</a>
+      <a href="tel:5819989732">581 998-9732</a>
+    </div>
+    <p style="font-size: 0.75rem; color: rgba(255,255,255,0.2);">
+      &copy; 2024 ClimaPure. Tous droits réservés. <br/>
+      Propulsé par <a href="https://agencegosell.ca" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.2);text-decoration:underline;">Agence GoSell</a>
+    </p>
   </div>
 </footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-text">Analyse d'air gratuite</div>
+  <a href="#formulaire" class="btn-mini">Réserver →</a>
+</div>
 
 <script>
   const WEBHOOK_URL = 'https://agosell.app.n8n.cloud/webhook/5554603d-d68a-4c83-8199-36a0cf67afeb';
@@ -1219,13 +1300,11 @@ Vérifiez vos SMS et courriels.</p>
   // ── Multi-step form logic ──────────────────────────────────────
   document.getElementById('btnNext').addEventListener('click', function() {
     const step1 = document.getElementById('step1');
-    // Validate step 1 fields
     const selects = step1.querySelectorAll('select[required], input[required]');
     let valid = true;
     selects.forEach(el => { if (!el.value) { el.focus(); valid = false; } });
     if (!valid) return;
 
-    // Transition to step 2
     document.getElementById('step1').classList.remove('active');
     document.getElementById('step2').classList.add('active');
     document.getElementById('circle1').classList.remove('active');
@@ -1255,21 +1334,21 @@ Vérifiez vos SMS et courriels.</p>
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
+    const oldText = btn.textContent;
     btn.textContent = 'Envoi en cours...';
 
-    // ── Source detection (URL params) ──────────────────────────
     const _params = new URLSearchParams(window.location.search);
     const _gclid  = _params.get('gclid')  || '';
     const _fbclid = _params.get('fbclid') || '';
     const _source = _gclid ? 'google' : _fbclid ? 'facebook' : 'direct';
 
     const data = {
-      first_name: this.first_name.value,
-      last_name:  this.last_name.value,
-      phone:      this.phone.value,
-      email:      this.email.value,
-      address:    this.address.value,
-      budget:     this.budget.value,
+      first_name: this.first_name.value || "",
+      last_name:  this.last_name.value || "",
+      phone:      this.phone.value || "",
+      email:      this.email.value || "",
+      address:    this.address.value || "",
+      budget:     this.budget.value || "",
       source:     _source,
       gclid:      _gclid,
     };
@@ -1283,13 +1362,10 @@ Vérifiez vos SMS et courriels.</p>
       document.getElementById('leadForm').style.display = 'none';
       document.querySelector('.form-progress').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-      // Meta Pixel — Lead event (uncomment when pixel is active)
-      // if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-      // Google Ads — Conversion (uncomment when Google Ads is active)
-      // if (typeof gtag !== 'undefined') gtag('event', 'conversion', { send_to: 'GOOGLE_ADS_ID_HERE/GOOGLE_ADS_CONV_HERE' });
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
     } catch (err) {
       btn.disabled = false;
-      btn.textContent = 'Obtenir ma soumission gratuite →';
+      btn.textContent = oldText;
       alert('Une erreur est survenue. Veuillez réessayer.');
     }
   });
@@ -1298,42 +1374,54 @@ Vérifiez vos SMS et courriels.</p>
   document.querySelectorAll('.faq-q').forEach(function(q) {
     q.addEventListener('click', function() {
       const answer = this.nextElementSibling;
-      const isOpen = answer.classList.contains('open');
+      const isOpen = answer.style.display === 'block';
       // Close all
-      document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
       document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
-      // Open clicked (if it was closed)
+      // Open clicked
       if (!isOpen) {
-        answer.classList.add('open');
+        answer.style.display = 'block';
         this.classList.add('open');
       }
     });
   });
-  // ── Auto-injection Antigravity Animations ────────────────────
+
+  // ── Sticky CTA Logic ────────────────────────────────────────
+  const stickyCta = document.querySelector('.sticky-cta');
+  if (stickyCta) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600 && window.innerWidth <= 600) {
+        stickyCta.classList.add('show');
+      } else {
+        stickyCta.classList.remove('show');
+      }
+    }, { passive: true });
+  }
+
+  // ── Auto-injection des Animations Antigravity ───────────────────
   const animatedSelectors = [
     '.section-title', '.section-tag', '.trust-item', 
     '.pain-q', '.check-item', '.gallery-item', 
-    '.review-card', '.whyus-item', '.form-group', '.success-msg'
+    '.review-card', '.whyus-item', '.faq-item', '.form-inner'
   ];
   
-  animatedSelectors.forEach(selector => {
-    document.querySelectorAll(selector).forEach((el, index) => {
-      el.classList.add('animate-up');
-      const delay = (index % 4) + 1;
-      el.classList.add(`delay-${delay}`);
-    });
-  });
-
-  const observer = new IntersectionObserver((entries) => {
+  const fadeUpObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
       }
     });
-  }, { rootMargin: "0px 0px -40px 0px" });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+  animatedSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      fadeUpObserver.observe(el);
+    });
+  });
 
   // ── Smooth JS parallax ──────────────────────────────────────────
   const parallaxItems = [
