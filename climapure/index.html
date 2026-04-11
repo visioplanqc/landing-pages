@@ -100,7 +100,7 @@
       background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/photo_2.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+
     }
     .hero:hover .hero-bg { transform: scale(1); }
     .hero-overlay {
@@ -515,7 +515,7 @@
       background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/image-calm-relaxed-woman-meditating-doing-breathing-practices-holding-hands-chest.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+
     }
     .reviews-overlay {
       position: absolute; inset: 0;
@@ -566,7 +566,7 @@
       background-image: url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/climapure/auto_photo_5.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+
     }
     .whyus-overlay {
       position: absolute; inset: 0;
@@ -1335,6 +1335,38 @@ Vérifiez vos SMS et courriels.</p>
   }, { rootMargin: "0px 0px -40px 0px" });
 
   document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+
+  // ── Smooth JS parallax (replaces buggy background-attachment:fixed) ──
+  const parallaxEls = [
+    { bg: document.querySelector('.hero-bg'),     speed: 0.35 },
+    { bg: document.querySelector('.reviews-bg'),  speed: 0.25 },
+    { bg: document.querySelector('.whyus-bg'),    speed: 0.25 },
+  ];
+
+  parallaxEls.forEach(({ bg }) => {
+    if (bg) bg.style.willChange = 'transform';
+  });
+
+  let ticking = false;
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    parallaxEls.forEach(({ bg, speed }) => {
+      if (!bg) return;
+      const rect = bg.parentElement.getBoundingClientRect();
+      const offset = (rect.top + scrollY) * speed;
+      bg.style.transform = `translate3d(0, ${offset}px, 0)`;
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateParallax();
 </script>
 
 </body>
