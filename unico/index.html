@@ -81,6 +81,10 @@ html,body{margin:0;padding:0;background:#fff}body{font-family:var(--font-sans);c
     #processus > div > div:last-child { grid-template-columns: 1fr !important; }
     /* Gallery: single col */
     #realisations > div > div:last-child { grid-template-columns: 1fr !important; }
+    /* About: stack text + stats */
+    #qui-sommes-nous > div > div, section[style*="F1F1F1"] > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+    /* Reviews: single col */
+    section[style*="141413"] > div > div:last-child { grid-template-columns: 1fr !important; }
     /* Footer outer: stack brand over cols */
     footer > div:first-child { grid-template-columns: 1fr !important; }
     /* Footer inner col grid: single col */
@@ -104,7 +108,7 @@ function UnicoHeader() {
     <header style={{position:"sticky",top:0,zIndex:50,background:"#fff",borderBottom:"1px solid #E5E5E5"}}>
       <div style={{maxWidth:1200,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24}}>
         <a href="#" style={{display:"flex",alignItems:"center"}} aria-label="Unico">
-          <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo.png" alt="Unico" style={{height:38}} />
+          <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo_color.svg" alt="Unico" style={{height:38}} />
         </a>
         <nav style={{display:"flex",gap:28}}>
           <a href="#realisations" style={{fontFamily:"Lato,sans-serif",fontSize:14,fontWeight:700,color:"#2F2F2F",textDecoration:"none",letterSpacing:"0.04em",textTransform:"uppercase"}}>Réalisations</a>
@@ -367,6 +371,106 @@ function UnicoProjectGallery() {
 window.UnicoProjectGallery = UnicoProjectGallery;
   </script>
 
+  <!-- ── QUI SOMMES-NOUS ──────────────────────────────────────────── -->
+  <script type="text/babel">
+/* global React */
+function UnicoAbout() {
+  const stats = [
+    { value:"30+", label:"Paysagistes partenaires" },
+    { value:"20%", label:"Économies sur les matériaux" },
+    { value:"42%", label:"Valeur ajoutée à votre propriété" },
+    { value:"100%", label:"Satisfaction garantie" },
+  ];
+  return (
+    <section style={{background:"#F1F1F1",padding:"80px 24px"}}>
+      <div style={{maxWidth:1200,margin:"0 auto"}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
+          <div>
+            <div className="unico-overline" style={{marginBottom:12}}>Qui sommes-nous</div>
+            <h2 className="unico-h2" style={{marginBottom:20}}>L'aménagement paysager clé en main, au meilleur prix.</h2>
+            <p className="unico-body" style={{color:"#4A4A4A",marginBottom:16,lineHeight:1.7}}>
+              Unico est un service d'aménagement paysager clé en main qui opère exclusivement dans les régions de Québec et Chaudière-Appalaches. En tant que fournisseur direct, nous éliminons les intermédiaires pour vous offrir des <strong>prix fournisseur</strong> et des économies réelles sur vos matériaux.
+            </p>
+            <p className="unico-body" style={{color:"#4A4A4A",marginBottom:24,lineHeight:1.7}}>
+              Notre conseiller se déplace chez vous avec échantillons et technologie 3D — <strong>pas besoin de vous déplacer</strong>. On planifie, on coordonne et on livre votre projet avec notre réseau de 30+ paysagistes partenaires sélectionnés pour leur expertise.
+            </p>
+            <div style={{display:"inline-flex",alignItems:"center",gap:10,background:"#FEE5E6",padding:"10px 18px",borderRadius:6}}>
+              <i data-lucide="award" style={{width:18,height:18,color:"#F8010C",flexShrink:0}} />
+              <span style={{fontFamily:"Lato,sans-serif",fontSize:13,fontWeight:700,color:"#F8010C"}}>Lauréat — L'Étoile de l'Équipe 2025 · Sommet des Partenaires Groupe Richer</span>
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+            {stats.map(s=>(
+              <div key={s.value} style={{background:"#fff",borderRadius:10,padding:"24px 20px",boxShadow:"0 2px 6px rgba(20,20,19,.06)",textAlign:"center"}}>
+                <div style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:36,color:"#F8010C",lineHeight:1}}>{s.value}</div>
+                <div style={{fontFamily:"Lato,sans-serif",fontSize:13,color:"#4A4A4A",marginTop:8,lineHeight:1.4}}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+window.UnicoAbout = UnicoAbout;
+  </script>
+
+  <!-- ── REVIEWS ───────────────────────────────────────────────────── -->
+  <script type="text/babel">
+/* global React */
+function UnicoReviews() {
+  const reviews = [
+    {
+      name:"Anick Lacroix", initial:"A", color:"#E8710A",
+      meta:"Il y a 9 mois · Google",
+      text:"À l'écoute de mes besoins et respectueux de mon budget. Très collaborant dans l'élaboration de mon plan d'aménagement, partage de son expertise, patience dans le montage de mon plan 3D. Bon suivi après les travaux. Communication facile. Je recommande !",
+    },
+    {
+      name:"Jonathan Thiboutot", initial:"J", color:"#4A4A4A",
+      meta:"Il y a 1 an · Google",
+      text:"Service rapide, efficace et super humain ! On sent qu'ils connaissent leur affaire et qu'ils veulent vraiment aider à faire le bon choix. J'ai adoré le fait de ne pas avoir à me déplacer — ils viennent chez toi avec tout ce qu'il faut pour décider sur place. Franchement, c'est un game changer pour les projets d'aménagement !",
+    },
+    {
+      name:"Mychael Blouin", initial:"M", color:"#1F8A4C",
+      meta:"Il y a 1 jour · Google",
+      text:"We wanted to work with a reputable and reliable company, and Unico truly met our expectations. The team provided professional, efficient, and reassuring service, with a solid final result. Very satisfied with our experience, we recommend them without hesitation.",
+    },
+    {
+      name:"LNK Services", initial:"L", color:"#7C3AED",
+      meta:"Il y a 8 mois · Google",
+      text:"J'ai fait affaire avec UNICO, j'ai choisi comme entrepreneur DRD. Très satisfait de leur travail.",
+    },
+  ];
+  return (
+    <section style={{background:"#141413",padding:"80px 24px"}}>
+      <div style={{maxWidth:1100,margin:"0 auto"}}>
+        <div style={{textAlign:"center",marginBottom:48}}>
+          <div style={{color:"#f59e0b",fontSize:"1.6rem",letterSpacing:4,marginBottom:12}}>★★★★★</div>
+          <div className="unico-overline" style={{color:"rgba(255,255,255,0.5)",marginBottom:12}}>Avis clients</div>
+          <h2 className="unico-h2" style={{color:"#fff"}}>Ce que nos clients disent.</h2>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:20}}>
+          {reviews.map(r=>(
+            <div key={r.name} style={{background:"#fff",borderRadius:10,padding:"24px"}}>
+              <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+                <div style={{width:38,height:38,borderRadius:"50%",background:r.color,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"Lato,sans-serif",fontWeight:700,fontSize:15,color:"#fff",flexShrink:0}}>{r.initial}</div>
+                <div>
+                  <div style={{fontFamily:"Lato,sans-serif",fontWeight:700,fontSize:14,color:"#141413"}}>{r.name}</div>
+                  <div style={{fontFamily:"Lato,sans-serif",fontSize:12,color:"#767676"}}>{r.meta}</div>
+                </div>
+                <div style={{marginLeft:"auto",color:"#f59e0b",fontSize:14}}>★★★★★</div>
+              </div>
+              <p style={{fontFamily:"Lato,sans-serif",fontSize:14,color:"#374151",lineHeight:1.65,margin:0}}>{r.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+window.UnicoReviews = UnicoReviews;
+  </script>
+
   <!-- ── FOOTER ───────────────────────────────────────────────────── -->
   <script type="text/babel">
 /* global React */
@@ -375,7 +479,7 @@ function UnicoFooter() {
     <footer style={{background:"#141413",color:"#F1F1F1"}}>
       <div style={{maxWidth:1200,margin:"0 auto",padding:"64px 24px 32px",display:"grid",gridTemplateColumns:"1.2fr 2fr",gap:48}}>
         <div style={{maxWidth:360}}>
-          <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo.png" alt="Unico" style={{height:42,filter:"brightness(0) invert(1)"}} />
+          <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo_white.svg" alt="Unico" style={{height:42}} />
           <p style={{fontFamily:"Lato,sans-serif",fontSize:13,color:"#C9C9C9",margin:"16px 0 0",lineHeight:1.55}}>Aménagement paysager clé en main · Québec &amp; Chaudière-Appalaches.</p>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
@@ -421,7 +525,9 @@ function App() {
       <UnicoHero />
       <UnicoTrustBar />
       <UnicoHowItWorks />
+      <UnicoAbout />
       <UnicoProjectGallery />
+      <UnicoReviews />
       <UnicoFooter />
     </React.Fragment>
   );
