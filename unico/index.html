@@ -377,7 +377,6 @@ window.UnicoProjectGallery = UnicoProjectGallery;
 function UnicoAbout() {
   const stats = [
     { value:"30+", label:"Paysagistes partenaires" },
-    { value:"20%", label:"Économies sur les matériaux" },
     { value:"42%", label:"Valeur ajoutée à votre propriété" },
     { value:"100%", label:"Satisfaction garantie" },
   ];
@@ -399,7 +398,7 @@ function UnicoAbout() {
               <span style={{fontFamily:"Lato,sans-serif",fontSize:13,fontWeight:700,color:"#F8010C"}}>Lauréat — L'Étoile de l'Équipe 2025 · Sommet des Partenaires Groupe Richer</span>
             </div>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:16}}>
             {stats.map(s=>(
               <div key={s.value} style={{background:"#fff",borderRadius:10,padding:"24px 20px",boxShadow:"0 2px 6px rgba(20,20,19,.06)",textAlign:"center"}}>
                 <div style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:36,color:"#F8010C",lineHeight:1}}>{s.value}</div>
