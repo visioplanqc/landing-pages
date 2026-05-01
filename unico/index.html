@@ -69,26 +69,52 @@ html,body{margin:0;padding:0;background:#fff}body{font-family:var(--font-sans);c
 [data-screen-label]{display:block}
   </style>
   <style id="responsive">
+  /* ── MOBILE ≤ 768px ─────────────────────────────────────────────── */
   @media (max-width: 768px) {
-    /* Hero: stack content vertically */
-    #soumission > div[style] { display: flex !important; flex-direction: column !important; padding: 40px 20px !important; gap: 32px !important; }
-    /* Form 2-col rows: single col */
-    form div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-    /* TrustBar: 2x2 */
-    section[style*="borderBottom"] > div[style],
-    section[style*="border-bottom"] > div[style] { grid-template-columns: repeat(2,1fr) !important; }
-    /* HowItWorks steps: single col */
-    #processus > div > div:last-child { grid-template-columns: 1fr !important; }
+    /* Header */
+    .u-header-inner { padding: 12px 16px !important; gap: 12px !important; }
+    .u-header-nav   { display: none !important; }
+
+    /* Hero */
+    #soumission { min-height: auto !important; }
+    .u-hero-grid { grid-template-columns: 1fr !important; padding: 48px 16px 36px !important; gap: 28px !important; }
+    .u-hero-h1   { font-size: 40px !important; }
+
+    /* Form rows: single col */
+    .u-form-row { grid-template-columns: 1fr !important; }
+
+    /* TrustBar: 2×2 */
+    .u-trust-grid { grid-template-columns: repeat(2,1fr) !important; padding: 16px !important; gap: 12px !important; }
+
+    /* How it works: single col */
+    .u-how-inner { padding: 48px 16px !important; }
+    .u-how-grid  { grid-template-columns: 1fr !important; }
+
+    /* About: stack, stats stay in a row */
+    .u-about-inner { padding: 48px 16px !important; }
+    .u-about-grid  { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .u-about-stats { grid-template-columns: repeat(3,1fr) !important; }
+
     /* Gallery: single col */
-    #realisations > div > div:last-child { grid-template-columns: 1fr !important; }
-    /* About: stack text + stats */
-    #qui-sommes-nous > div > div, section[style*="F1F1F1"] > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .u-gal-inner { padding: 48px 16px !important; }
+    .u-gal-grid  { grid-template-columns: 1fr !important; }
+    .u-gal-head  { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+
     /* Reviews: single col */
-    section[style*="141413"] > div > div:last-child { grid-template-columns: 1fr !important; }
-    /* Footer outer: stack brand over cols */
-    footer > div:first-child { grid-template-columns: 1fr !important; }
-    /* Footer inner col grid: single col */
-    footer > div:first-child > div:last-child { grid-template-columns: 1fr !important; }
+    .u-reviews-inner { padding: 48px 16px !important; }
+    .u-reviews-grid  { grid-template-columns: 1fr !important; }
+
+    /* Footer */
+    .u-footer-inner { padding: 40px 16px 24px !important; grid-template-columns: 1fr !important; gap: 28px !important; }
+    .u-footer-cols  { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .u-footer-legal { padding: 12px 16px 24px !important; flex-direction: column !important; gap: 4px !important; text-align: center !important; }
+
+    /* Inputs: 16px min to prevent iOS zoom */
+    .unico-field__input { font-size: 16px !important; }
+
+    /* Typography scale-down */
+    .unico-h2 { font-size: 24px !important; }
+    .unico-h3 { font-size: 18px !important; }
   }
   </style>
 </head>
@@ -106,11 +132,11 @@ html,body{margin:0;padding:0;background:#fff}body{font-family:var(--font-sans);c
 function UnicoHeader() {
   return (
     <header style={{position:"sticky",top:0,zIndex:50,background:"#fff",borderBottom:"1px solid #E5E5E5"}}>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24}}>
+      <div className="u-header-inner" style={{maxWidth:1200,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24}}>
         <a href="#" style={{display:"flex",alignItems:"center"}} aria-label="Unico">
           <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo_color.svg" alt="Unico" style={{height:38}} />
         </a>
-        <nav style={{display:"flex",gap:28}}>
+        <nav className="u-header-nav" style={{display:"flex",gap:28}}>
           <a href="#realisations" style={{fontFamily:"Lato,sans-serif",fontSize:14,fontWeight:700,color:"#2F2F2F",textDecoration:"none",letterSpacing:"0.04em",textTransform:"uppercase"}}>Réalisations</a>
           <a href="#processus" style={{fontFamily:"Lato,sans-serif",fontSize:14,fontWeight:700,color:"#2F2F2F",textDecoration:"none",letterSpacing:"0.04em",textTransform:"uppercase"}}>Processus</a>
           <a href="#zone" style={{fontFamily:"Lato,sans-serif",fontSize:14,fontWeight:700,color:"#2F2F2F",textDecoration:"none",letterSpacing:"0.04em",textTransform:"uppercase"}}>Zone desservie</a>
@@ -179,11 +205,11 @@ function UnicoHero() {
     <section id="soumission" style={{position:"relative",overflow:"hidden",minHeight:720,display:"flex",alignItems:"stretch"}}>
       <div style={{position:"absolute",inset:0,backgroundImage:"url('https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/hero.jpg')",backgroundSize:"cover",backgroundPosition:"center"}} />
       <div style={{position:"absolute",inset:0,background:"linear-gradient(95deg,rgba(20,20,19,0.82) 0%,rgba(20,20,19,0.55) 50%,rgba(20,20,19,0.25) 100%)"}} />
-      <div style={{position:"relative",zIndex:1,maxWidth:1200,margin:"0 auto",padding:"100px 24px 72px",width:"100%",boxSizing:"border-box",display:"grid",gridTemplateColumns:"1.05fr 0.95fr",gap:56,alignItems:"center"}}>
+      <div className="u-hero-grid" style={{position:"relative",zIndex:1,maxWidth:1200,margin:"0 auto",padding:"100px 24px 72px",width:"100%",boxSizing:"border-box",display:"grid",gridTemplateColumns:"1.05fr 0.95fr",gap:56,alignItems:"center"}}>
         {/* LEFT: pitch */}
         <div style={{color:"#fff"}}>
           <div style={{fontFamily:"Lato,sans-serif",fontSize:12,fontWeight:700,letterSpacing:"0.18em",textTransform:"uppercase",color:"#F1F1F1",opacity:0.9,marginBottom:18}}>Aménagement paysager · Clé en main</div>
-          <h1 style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:64,lineHeight:1,letterSpacing:"0.02em",textTransform:"uppercase",margin:0,textShadow:"0 2px 24px rgba(0,0,0,.25)"}}>
+          <h1 className="u-hero-h1" style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:64,lineHeight:1,letterSpacing:"0.02em",textTransform:"uppercase",margin:0,textShadow:"0 2px 24px rgba(0,0,0,.25)"}}>
             Votre cour.<br />
             <span style={{color:"#F8010C"}}>Clé en main.</span>
           </h1>
@@ -214,7 +240,7 @@ function UnicoHero() {
             <React.Fragment>
               <div style={{fontFamily:"Lato,sans-serif",fontSize:11,fontWeight:700,letterSpacing:"0.16em",textTransform:"uppercase",color:"#F8010C"}}>Soumission gratuite · 60 secondes</div>
               <h3 style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:24,color:"#141413",textTransform:"uppercase",letterSpacing:"0.03em",margin:"2px 0 8px"}}>Démarrer ma soumission</h3>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+              <div className="u-form-row" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
                 <div className="unico-field">
                   <label className="unico-field__label">Prénom</label>
                   <input className="unico-field__input" name="first_name" placeholder="Marie" required />
@@ -224,7 +250,7 @@ function UnicoHero() {
                   <input className="unico-field__input" name="last_name" placeholder="Tremblay" required />
                 </div>
               </div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+              <div className="u-form-row" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
                 <div className="unico-field">
                   <label className="unico-field__label">Téléphone</label>
                   <input className="unico-field__input" name="phone" type="tel" placeholder="418 555-0102" required />
@@ -278,7 +304,7 @@ function UnicoTrustBar() {
   ];
   return (
     <section style={{background:"#FFFFFF",borderBottom:"1px solid #E5E5E5"}}>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"22px 24px",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:18}}>
+      <div className="u-trust-grid" style={{maxWidth:1200,margin:"0 auto",padding:"22px 24px",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:18}}>
         {items.map((it)=>(
           <div key={it.icon} style={{display:"inline-flex",alignItems:"center",justifyContent:"center",gap:10}}>
             <i data-lucide={it.icon} style={{width:22,height:22,color:"#F8010C"}} />
@@ -303,12 +329,12 @@ function UnicoHowItWorks() {
   ];
   return (
     <section id="processus" style={{background:"#F1F1F1"}}>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"80px 24px"}}>
+      <div className="u-how-inner" style={{maxWidth:1200,margin:"0 auto",padding:"80px 24px"}}>
         <div style={{marginBottom:36,maxWidth:720}}>
           <div className="unico-overline">Processus</div>
           <h2 className="unico-h2" style={{marginTop:8}}>De l'idée à la cour terminée, en trois étapes.</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:18}}>
+        <div className="u-how-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:18}}>
           {steps.map((s)=>(
             <div key={s.num} style={{background:"#FFFFFF",borderRadius:10,padding:"28px 26px",boxShadow:"0 2px 6px rgba(20,20,19,.06),0 1px 2px rgba(20,20,19,.04)"}}>
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
@@ -341,8 +367,8 @@ function UnicoProjectGallery() {
   ];
   return (
     <section id="realisations" style={{background:"#FFFFFF"}}>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"80px 24px"}}>
-        <div style={{display:"flex",alignItems:"flex-end",justifyContent:"space-between",marginBottom:32,gap:18}}>
+      <div className="u-gal-inner" style={{maxWidth:1200,margin:"0 auto",padding:"80px 24px"}}>
+        <div className="u-gal-head" style={{display:"flex",alignItems:"flex-end",justifyContent:"space-between",marginBottom:32,gap:18}}>
           <div>
             <div className="unico-overline">Réalisations</div>
             <h2 className="unico-h2" style={{marginTop:8}}>Des projets, pas des promesses.</h2>
@@ -352,7 +378,7 @@ function UnicoProjectGallery() {
             <i data-lucide="arrow-right" style={{width:16,height:16,marginLeft:6}} />
           </a>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:18}}>
+        <div className="u-gal-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:18}}>
           {projects.map((p)=>(
             <article key={p.title} style={{background:"#fff",borderRadius:10,overflow:"hidden",boxShadow:"0 2px 6px rgba(20,20,19,.06),0 1px 2px rgba(20,20,19,.04)",transition:"transform 200ms cubic-bezier(.2,.6,.2,1),box-shadow 200ms",cursor:"pointer"}}>
               <div style={{aspectRatio:"16/11",backgroundSize:"cover",backgroundPosition:"center",backgroundImage:`url('${p.img}')`}} />
@@ -382,8 +408,8 @@ function UnicoAbout() {
   ];
   return (
     <section style={{background:"#F1F1F1",padding:"80px 24px"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
+      <div className="u-about-inner" style={{maxWidth:1200,margin:"0 auto"}}>
+        <div className="u-about-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
           <div>
             <div className="unico-overline" style={{marginBottom:12}}>Qui sommes-nous</div>
             <h2 className="unico-h2" style={{marginBottom:20}}>L'aménagement paysager clé en main, au meilleur prix.</h2>
@@ -398,7 +424,7 @@ function UnicoAbout() {
               <span style={{fontFamily:"Lato,sans-serif",fontSize:13,fontWeight:700,color:"#F8010C"}}>Lauréat — L'Étoile de l'Équipe 2025 · Sommet des Partenaires Groupe Richer</span>
             </div>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:16}}>
+          <div className="u-about-stats" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:16}}>
             {stats.map(s=>(
               <div key={s.value} style={{background:"#fff",borderRadius:10,padding:"24px 20px",boxShadow:"0 2px 6px rgba(20,20,19,.06)",textAlign:"center"}}>
                 <div style={{fontFamily:"Lato,sans-serif",fontWeight:900,fontSize:36,color:"#F8010C",lineHeight:1}}>{s.value}</div>
@@ -442,13 +468,13 @@ function UnicoReviews() {
   ];
   return (
     <section style={{background:"#141413",padding:"80px 24px"}}>
-      <div style={{maxWidth:1100,margin:"0 auto"}}>
+      <div className="u-reviews-inner" style={{maxWidth:1100,margin:"0 auto"}}>
         <div style={{textAlign:"center",marginBottom:48}}>
           <div style={{color:"#f59e0b",fontSize:"1.6rem",letterSpacing:4,marginBottom:12}}>★★★★★</div>
           <div className="unico-overline" style={{color:"rgba(255,255,255,0.5)",marginBottom:12}}>Avis clients</div>
           <h2 className="unico-h2" style={{color:"#fff"}}>Ce que nos clients disent.</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:20}}>
+        <div className="u-reviews-grid" style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:20}}>
           {reviews.map(r=>(
             <div key={r.name} style={{background:"#fff",borderRadius:10,padding:"24px"}}>
               <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
@@ -476,12 +502,12 @@ window.UnicoReviews = UnicoReviews;
 function UnicoFooter() {
   return (
     <footer style={{background:"#141413",color:"#F1F1F1"}}>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"64px 24px 32px",display:"grid",gridTemplateColumns:"1.2fr 2fr",gap:48}}>
+      <div className="u-footer-inner" style={{maxWidth:1200,margin:"0 auto",padding:"64px 24px 32px",display:"grid",gridTemplateColumns:"1.2fr 2fr",gap:48}}>
         <div style={{maxWidth:360}}>
           <img src="https://qetnitjslapfzemmelkr.supabase.co/storage/v1/object/public/client-photos/unico/logo_white.svg" alt="Unico" style={{height:42}} />
           <p style={{fontFamily:"Lato,sans-serif",fontSize:13,color:"#C9C9C9",margin:"16px 0 0",lineHeight:1.55}}>Aménagement paysager clé en main · Québec &amp; Chaudière-Appalaches.</p>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
+        <div className="u-footer-cols" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
           <div>
             <div style={{fontFamily:"Lato,sans-serif",fontWeight:700,fontSize:11,letterSpacing:"0.18em",textTransform:"uppercase",color:"#FFFFFF",marginBottom:12}}>Services</div>
             {["Pavé-uni & entrées","Aménagement piscine","Cuisines extérieures","Cours arrière complètes"].map(s=>(
@@ -496,12 +522,12 @@ function UnicoFooter() {
           </div>
           <div>
             <div style={{fontFamily:"Lato,sans-serif",fontWeight:700,fontSize:11,letterSpacing:"0.18em",textTransform:"uppercase",color:"#FFFFFF",marginBottom:12}}>Contact</div>
-            <a href="tel:+15813070900" style={{display:"block",fontFamily:"Lato,sans-serif",fontSize:14,color:"#C9C9C9",textDecoration:"none",padding:"5px 0"}}>581 880-9428</a>
+            <a href="tel:+15813070900" style={{display:"block",fontFamily:"Lato,sans-serif",fontSize:14,color:"#C9C9C9",textDecoration:"none",padding:"5px 0"}}>(581) 307-0900</a>
             <a href="mailto:bonjour@groupeunico.ca" style={{display:"block",fontFamily:"Lato,sans-serif",fontSize:14,color:"#C9C9C9",textDecoration:"none",padding:"5px 0"}}>bonjour@groupeunico.ca</a>
           </div>
         </div>
       </div>
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"16px 24px 32px",display:"flex",justifyContent:"space-between",fontFamily:"Lato,sans-serif",fontSize:12,color:"#767676",borderTop:"1px solid #2F2F2F"}}>
+      <div className="u-footer-legal" style={{maxWidth:1200,margin:"0 auto",padding:"16px 24px 32px",display:"flex",justifyContent:"space-between",fontFamily:"Lato,sans-serif",fontSize:12,color:"#767676",borderTop:"1px solid #2F2F2F"}}>
         <span>© {new Date().getFullYear()} Groupe Unico inc.</span>
         <span>Prix juste. Expérience unique. · Propulsé par <a href="https://agencegosell.ca" target="_blank" rel="noopener" style={{color:"#767676"}}>Agence GoSell</a></span>
       </div>
