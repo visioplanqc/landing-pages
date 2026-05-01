@@ -232,14 +232,7 @@ function UnicoHero() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      setSubmitting(false);
-      setSubmitted(true);
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'page_view', { page_location: 'https://pages.agosell.com/unico/merci' });
-        gtag('event', 'conversion', { send_to: 'AW-8707848109' });
-        gtag('event', 'conversion', { send_to: 'AW-18076709401' });
-      }
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+      window.location.href = '/unico/merci';
     } catch (err) {
       setFormError('Une erreur est survenue. Veuillez réessayer.');
       setSubmitting(false);
