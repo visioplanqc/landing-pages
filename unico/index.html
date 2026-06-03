@@ -175,7 +175,7 @@ function UnicoHeader() {
     <header style={{position:"sticky",top:0,zIndex:50,background:"#fff",borderBottom:"1px solid #E5E5E5"}}>
       <div className="u-header-inner" style={{maxWidth:1200,margin:"0 auto",padding:"14px 24px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:24}}>
         <a href="#" style={{display:"flex",alignItems:"center"}} aria-label="Unico">
-          <img src="./logo.png" alt="Unico" style={{height:38}} />
+          <img src="/unico/logo.png" alt="Unico" style={{height:38}} />
         </a>
         <nav className="u-header-nav" style={{display:"flex",gap:28}}>
           <a href="#realisations" style={{fontFamily:"Lato,sans-serif",fontSize:14,fontWeight:700,color:"#2F2F2F",textDecoration:"none",letterSpacing:"0.04em",textTransform:"uppercase"}}>Réalisations</a>
@@ -241,7 +241,7 @@ function UnicoHero() {
 
   return (
     <section id="soumission" style={{position:"relative",overflow:"hidden",minHeight:720,display:"flex",alignItems:"stretch"}}>
-      <div style={{position:"absolute",inset:0,backgroundImage:"url('./hero.jpg')",backgroundSize:"cover",backgroundPosition:"center"}} />
+      <div style={{position:"absolute",inset:0,backgroundImage:"url('/unico/hero.jpg')",backgroundSize:"cover",backgroundPosition:"center"}} />
       <div style={{position:"absolute",inset:0,background:"linear-gradient(95deg,rgba(20,20,19,0.82) 0%,rgba(20,20,19,0.55) 50%,rgba(20,20,19,0.25) 100%)"}} />
       <div className="u-hero-grid" style={{position:"relative",zIndex:1,maxWidth:1200,margin:"0 auto",padding:"100px 24px 72px",width:"100%",boxSizing:"border-box",display:"grid",gridTemplateColumns:"1.05fr 0.95fr",gap:56,alignItems:"center"}}>
         {/* LEFT: pitch */}
@@ -396,12 +396,12 @@ window.UnicoHowItWorks = UnicoHowItWorks;
 /* global React */
 function UnicoProjectGallery() {
   const projects = [
-    { img:"./photo_1.jpg", tag:"Cour arrière",       title:"Terrasse de luxe avec piscine et bar extérieur",     meta:"Québec · 2024" },
-    { img:"./photo_2.jpg", tag:"Cour arrière",       title:"Terrasse multi-niveaux avec bassin et éclairage",    meta:"Québec · 2024" },
-    { img:"./photo_3.jpg", tag:"Aménagement piscine", title:"Pavé autour de piscine avec espace détente",         meta:"Lévis · 2024" },
-    { img:"./photo_4.jpg", tag:"Entrée & façade",     title:"Entrée circulaire en pavé avec aménagement paysager", meta:"Sainte-Foy · 2024" },
-    { img:"./photo_5.jpg", tag:"Cuisine extérieure",  title:"Cuisine extérieure intégrée sous pergola",           meta:"Charlesbourg · 2024" },
-    { img:"./photo_6.jpg", tag:"Détente",             title:"Foyer au gaz avec muret de pierre et salon",         meta:"Beauport · 2024" },
+    { img:"/unico/photo_1.jpg", tag:"Cour arrière",       title:"Terrasse de luxe avec piscine et bar extérieur",     meta:"Québec · 2024" },
+    { img:"/unico/photo_2.jpg", tag:"Cour arrière",       title:"Terrasse multi-niveaux avec bassin et éclairage",    meta:"Québec · 2024" },
+    { img:"/unico/photo_3.jpg", tag:"Aménagement piscine", title:"Pavé autour de piscine avec espace détente",         meta:"Lévis · 2024" },
+    { img:"/unico/photo_4.jpg", tag:"Entrée & façade",     title:"Entrée circulaire en pavé avec aménagement paysager", meta:"Sainte-Foy · 2024" },
+    { img:"/unico/photo_5.jpg", tag:"Cuisine extérieure",  title:"Cuisine extérieure intégrée sous pergola",           meta:"Charlesbourg · 2024" },
+    { img:"/unico/photo_6.jpg", tag:"Détente",             title:"Foyer au gaz avec muret de pierre et salon",         meta:"Beauport · 2024" },
   ];
   return (
     <section id="realisations" style={{background:"#FFFFFF"}}>
@@ -542,7 +542,7 @@ function UnicoFooter() {
     <footer style={{background:"#141413",color:"#F1F1F1"}}>
       <div className="u-footer-inner" style={{maxWidth:1200,margin:"0 auto",padding:"64px 24px 32px",display:"grid",gridTemplateColumns:"1.2fr 2fr",gap:48}}>
         <div style={{maxWidth:360}}>
-          <img src="./logo.png" alt="Unico" style={{height:42,filter:"brightness(0) invert(1)"}} />
+          <img src="/unico/logo.png" alt="Unico" style={{height:42,filter:"brightness(0) invert(1)"}} />
           <p style={{fontFamily:"Lato,sans-serif",fontSize:13,color:"#C9C9C9",margin:"16px 0 0",lineHeight:1.55}}>Aménagement paysager clé en main · Québec &amp; Chaudière-Appalaches.</p>
         </div>
         <div className="u-footer-cols" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
